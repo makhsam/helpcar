@@ -1,0 +1,169 @@
+Table "admins" {
+  "id" int(11) [pk, not null]
+  "username" varchar(255) [not null]
+  "password" varchar(255) [not null]
+  "status" tinyint(4) [not null]
+  "created_at" datetime [not null]
+  "updated_at" timestamp [not null]
+}
+
+Table "banners" {
+  "id" int(11) [pk, not null]
+  "image" varchar(255) [not null]
+  "title" varchar(255) [not null]
+  "link" varchar(255) [not null]
+  "status" tinyint(4) [not null]
+  "created_at" datetime [not null]
+  "updated_at" datetime [not null]
+}
+
+Table "cart" {
+  "id" int(10) [pk, not null]
+  "product_id" int(11) [not null]
+  "product_name" varchar(191) [not null]
+  "price" varchar(191) [not null]
+  "quantity" int(11) [not null]
+  "user_email" varchar(191) [not null]
+  "session_id" varchar(191) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "categories" {
+  "id" int(10) [pk, not null]
+  "parent_id" int(11) [not null, default: "0"]
+  "name" varchar(191) [not null]
+  "description" text [not null]
+  "url" varchar(191) [not null]
+  "status" tinyint(4) [not null, default: "1"]
+  "remember_token" varchar(100) [default: NULL]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "countries" {
+  "id" int(11) [pk, not null]
+  "country_code" varchar(2) [not null, default: ""]
+  "country_name" varchar(100) [not null, default: ""]
+}
+
+Table "coupons" {
+  "id" int(10) [pk, not null]
+  "coupon_code" varchar(191) [not null]
+  "amount" int(11) [not null]
+  "amount_type" varchar(191) [not null]
+  "expiry_date" date [not null]
+  "status" tinyint(4) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "delivery_addresses" {
+  "id" int(11) [pk, not null]
+  "user_id" int(11) [not null]
+  "user_email" varchar(255) [not null]
+  "address" varchar(255) [not null]
+  "city" varchar(255) [not null]
+  "mobile" varchar(255) [not null]
+  "created_at" timestamp [not null]
+  "updated_at" timestamp [not null]
+}
+
+Table "migrations" {
+  "id" int(10) [pk, not null]
+  "migration" varchar(191) [not null]
+  "batch" int(11) [not null]
+}
+
+Table "orders" {
+  "id" int(11) [pk, not null]
+  "user_id" int(11) [not null]
+  "user_email" varchar(255) [not null]
+  "name" varchar(255) [not null]
+  "address" varchar(255) [not null]
+  "city" varchar(255) [not null]
+  "mobile" varchar(255) [not null]
+  "coupon_code" varchar(255) [not null]
+  "coupon_amount" float [not null]
+  "order_status" varchar(255) [not null]
+  "payment_method" varchar(255) [not null]
+  "grand_total" varchar(255) [not null]
+  "created_at" datetime [not null]
+  "updated_at" timestamp [not null]
+}
+
+Table "orders_products" {
+  "id" int(11) [pk, not null]
+  "order_id" int(11) [not null]
+  "user_id" int(11) [not null]
+  "product_id" int(11) [not null]
+  "product_name" varchar(255) [not null]
+  "product_price" varchar(255) [not null]
+  "product_qty" int(11) [not null]
+  "created_at" datetime [not null]
+  "updated_at" timestamp [not null]
+}
+
+Table "password_resets" {
+  "email" varchar(191) [not null]
+  "token" varchar(191) [not null]
+  "created_at" timestamp [default: NULL]
+}
+
+Table "products" {
+  "id" int(10) [pk, not null]
+  "category_id" int(11) [not null]
+  "product_name" varchar(191) [not null]
+  "description" text [not null]
+  "price" varchar(255) [not null]
+  "price_two" varchar(255) [not null]
+  "image" varchar(191) [default: NULL]
+  "status" tinyint(1) [not null, default: "1"]
+  "featured" tinyint(1) [not null, default: "0"]
+  "new" tinyint(1) [not null, default: "0"]
+  "popular" tinyint(1) [not null, default: "0"]
+  "best" tinyint(1) [not null, default: "0"]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "products_attributes" {
+  "id" int(10) [pk, not null]
+  "product_id" int(11) [not null]
+  "name" varchar(255) [not null]
+  "description" varchar(255) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "products_images" {
+  "id" int(11) [pk, not null]
+  "product_id" int(11) [not null]
+  "image" varchar(255) [not null]
+  "created_at" datetime [not null]
+  "updated_at" timestamp [not null]
+}
+
+Table "users" {
+  "id" bigint(20) [pk, not null]
+  "name" varchar(191) [not null]
+  "email" varchar(191) [not null]
+  "email_verified_at" timestamp [default: NULL]
+  "password" varchar(191) [not null]
+  "remember_token" varchar(100) [default: NULL]
+  "admin" tinyint(1) [default: "0"]
+  "status" tinyint(4) [default: "0"]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "wish_list" {
+  "id" bigint(20) [pk, not null]
+  "product_id" int(11) [not null]
+  "product_name" varchar(191) [not null]
+  "price" double(8,2) [not null]
+  "quantity" int(11) [not null]
+  "user_email" varchar(191) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
