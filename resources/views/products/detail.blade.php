@@ -81,7 +81,7 @@
                                     	<p>{{ $name->name}} _______________ {{ $name->description}}</p>
                                     @endforeach
 
-                                    <form name="addtocartForm" id="addtocartForm" action="{{ url('add-cart') }}">
+                                    <form name="addtocartForm" id="addtocartForm" action="{{ url('add-cart') }}" method="POST">
 										{{ csrf_field() }}
 										<input type="hidden" name="product_id" value="{{ $productDetails->id }}">
 										<input type="hidden" name="product_name" value="{{ $productDetails->product_name }}">

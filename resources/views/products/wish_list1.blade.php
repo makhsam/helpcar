@@ -56,7 +56,7 @@
 							<td class="cart_total">
 								<p class="cart_total_price">$ {{ $product_price*$wishlist->quantity }}</p>
 							</td>
-							<form name="addtocartForm" id="addtocartForm" action="{{ url('add-cart') }}">
+							<form name="addtocartForm" id="addtocartForm" action="{{ url('add-cart') }}" method="POST">
                             	{{ csrf_field() }}
                             	<input type="hidden" name="product_id" value="{{ $wishlist->product_id }}">
                             	<input type="hidden" name="product_name" value="{{ $wishlist->product_name }}">
