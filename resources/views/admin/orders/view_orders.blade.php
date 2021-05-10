@@ -50,7 +50,7 @@
                   <td class="center">{{ $order->user_email }}</td>
                   <td class="center">
                   @foreach($order->orders as $pro)
-                     {{ $pro->product_code }}
+                     {{ $pro->product_name ?? '-' }}
                      ({{ $pro->product_qty }})
                   @endforeach
                   </td>
