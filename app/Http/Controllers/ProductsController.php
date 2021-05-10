@@ -19,6 +19,7 @@ use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductsController extends Controller
@@ -404,11 +405,13 @@ class ProductsController extends Controller
 
     public function searchProducts(Request $request)
     {
-        $data = $request->all();
-
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
 
-        $search_product = $data['product'];
+        $search_product = $request->input('product');
+
+        if (empty($search_product)) {
+            return redirect()->to('/');
+        }
 
         $productsAll = Product::query()
             ->where(function ($query) use ($search_product) {
@@ -427,7 +430,6 @@ class ProductsController extends Controller
 
     public function product($id = null)
     {
-
         // Show 404 page if product is disabled
         $productsCount = Product::where(['id' => $id, 'status' => 1])->count();
         if ($productsCount == 0) {
@@ -451,7 +453,6 @@ class ProductsController extends Controller
 
     public function addtocart(Request $request)
     {
-
         Session::forget('CouponAmount');
         Session::forget('CouponCode');
 
@@ -498,7 +499,7 @@ class ProductsController extends Controller
 
             $session_id = Session::get('session_id');
             if (!isset($session_id)) {
-                $session_id = str_random(40);
+                $session_id = Str::random(40);
                 Session::put('session_id', $session_id);
             }
 
@@ -663,7 +664,8 @@ class ProductsController extends Controller
                 $shipping->city = $data['city'];
                 $shipping->save();
             }
-            return redirect()->action('ProductsController@orderReview');
+
+            return redirect()->to('/order-review');
         }
 
         return view('products.checkout')->with(compact('userDetails', 'countries', 'shippingDetails'));
@@ -677,10 +679,12 @@ class ProductsController extends Controller
         $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
         $shippingDetails = json_decode(json_encode($shippingDetails));
         $userCart = DB::table('cart')->where(['user_email' => $user_email])->get();
+
         foreach ($userCart as $key => $product) {
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
         }
+
         return view('products.order_review')->with(compact('userDetails', 'shippingDetails', 'userCart'));
     }
 
@@ -706,8 +710,6 @@ class ProductsController extends Controller
             } else {
                 $coupon_amount = Session::get('CouponAmount');
             }
-
-            // $grand_total = Product::getGrandTotal();
 
             $order = new Order;
             $order->user_id = $user_id;
@@ -740,14 +742,13 @@ class ProductsController extends Controller
             Session::put('order_id', $order_id);
             Session::put('grand_total', $data['grand_total']);
 
-            if ($data['payment_method'] == "Payme") {
-                // Redirect user to thanks page after saving order
-                return redirect('/payme');
-            } else {
-                // Paypal - Redirect user to paypal page after saving order
-                return redirect('/paypal');
-            }
+            // Empty the cart
+            $user_email = Auth::user()->email;
+            DB::table('cart')->where('user_email', $user_email)->delete();
         }
+
+        // Redirect user to thanks page after saving order
+        return view('orders.success');
     }
 
     public function payme(Request $request)

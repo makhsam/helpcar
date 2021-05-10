@@ -53,9 +53,9 @@
 								<h3><strong>Yetkazib berish uchun manzil</strong></h3>
 							</div>
 							<div class="custom-input">
-									<input type="text" name="mobile" placeholder="Telefon" @if(!empty($shippingDetails->mobile)) value="{{ $shippingDetails->mobile }}" @endif />
-									<input type="text" name="city" placeholder="Shahar" @if(!empty($shippingDetails->city)) value="{{ $shippingDetails->city }}" @endif />
-                                    <input type="text" name="address" placeholder="To'liq manzil" @if(!empty($shippingDetails->address)) value="{{ $shippingDetails->address }}" @endif />
+								<input type="text" name="mobile" placeholder="Telefon" @if(!empty($shippingDetails->mobile)) value="{{ $shippingDetails->mobile }}" @endif />
+								<input type="text" name="city" placeholder="Shahar" @if(!empty($shippingDetails->city)) value="{{ $shippingDetails->city }}" @endif />
+								<input type="text" name="address" placeholder="To'liq manzil" @if(!empty($shippingDetails->address)) value="{{ $shippingDetails->address }}" @endif />
 							</div>
 							<div class="log-title">
 							<br>
@@ -72,8 +72,8 @@
 									</tbody>
                                 </table>
                                 <div class="submit-text coupon">
-                                	    <!-- <button type="submit">Place order</button> -->
-										<a href="#">ok</a>
+									<button type="submit">Place order</button>
+                                	<!-- <a href="#">ok</a> -->
 								</div>
 							</div>
 						  </form>

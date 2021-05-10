@@ -114,6 +114,7 @@ class UsersController extends Controller
             });
             return redirect('login-register')->with('flash_message_success', 'Please check your email for new password!');
         }
+
         return view('users.forgot_password');
     }
 

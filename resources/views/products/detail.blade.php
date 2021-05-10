@@ -78,31 +78,31 @@
 									<h5> {{ $productDetails->price}}  <span style="font-size: 17px; text-transform: lowercase; color: #333;"> so'm / dona</span></h5>
                                     <h5> {{ $productDetails->price_two }} <span style="font-size: 17px; text-transform: lowercase; color: #333;"> so'm / optim</span></h5>
                                     @foreach($productDetails->attributes as $name)
-                                    <p>{{ $name->name}} _______________ {{ $name->description}}</p>
+                                    	<p>{{ $name->name}} _______________ {{ $name->description}}</p>
                                     @endforeach
+
                                     <form name="addtocartForm" id="addtocartForm" action="{{ url('add-cart') }}">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
-                                    <input type="hidden" name="product_name" value="{{ $productDetails->product_name }}">
-                                    <input type="hidden" name="price" id="price" value="{{ $productDetails->price }}">
-									<div class="all-choose" style="padding-top: 50px;">
-										<div class="s-shoose">
-											<h5></h5>
+										{{ csrf_field() }}
+										<input type="hidden" name="product_id" value="{{ $productDetails->id }}">
+										<input type="hidden" name="product_name" value="{{ $productDetails->product_name }}">
+										<input type="hidden" name="price" id="price" value="{{ $productDetails->price }}">
+										<div class="all-choose" style="padding-top: 50px;">
+											<div class="s-shoose">
 												<div class="plus-minus">
 													<a class="dec qtybutton">-</a>
 													<input type="text" value="1" name="quantity" class="plus-minus-box">
 													<a class="inc qtybutton">+</a>
 												</div>
+											</div>
 										</div>
-									</div>
-									<div class="list-btn">
-                                        <button type="submit" name="cartButton" value="Add to Cart">
-                                            Savatga qo'shish
-                                        </button>
-                                        <button type="submit" name="wishListButton" value="Wish List">
-                                            Saralanganlarga
-                                        </button>
-                                    </div>
+										<div class="list-btn">
+											<button type="submit" name="cartButton" value="Add to Cart">
+												Savatga qo'shish
+											</button>
+											<button type="submit" name="wishListButton" value="Wish List">
+												Saralanganlarga
+											</button>
+										</div>
                                     </form>
 								</div>
 							</div>

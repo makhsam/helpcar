@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin', 'AdminController@login');
 Route::post('/admin', 'AdminController@login');
 
-// Route::redirect('/abdumalik', '/admin');
-
 Auth::routes();
 
 // Index Page
@@ -20,10 +18,10 @@ Route::get('/products/{url}', 'ProductsController@products');
 Route::get('/product/{id}', 'ProductsController@product');
 
 // Add to Cart Route
-Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtocart');
+Route::post('/add-cart', 'ProductsController@addtocart');
 
 // Cart Page
-Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
+Route::get('/cart', 'ProductsController@cart');
 
 // Delete Product from Cart Page
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    // Order => order => orders
     protected $table = 'orders';
 
     public function orders()
@@ -16,19 +15,11 @@ class Order extends Model
 
     public static function getOrderDetails($order_id)
     {
-        $getOrderDetails = Order::where('id', $order_id)->first();
-        return $getOrderDetails;
+        return self::where('id', $order_id)->first();
     }
 
     public static function getCountryCode($country)
     {
-        $getCountryCode = Country::where('country_name', $country)->first();
-        return $getCountryCode;
+        return Country::where('country_name', $country)->first();
     }
 }
-
-$order = new Order;
-
-$products = $order->orders;
-
-$products = OrdersProduct::where('order_id', $order->id)->get();
