@@ -3,8 +3,8 @@
 <?php use App\Order; ?>
 
 <?php
-                $orderDetails = Order::getOrderDetails(Session::get('order_id'));
-                $orderDetails = json_decode(json_encode($orderDetails));
+    $orderDetails = Order::getOrderDetails(Session::get('order_id'));
+    $orderDetails = json_decode(json_encode($orderDetails));
 ?>
 <div class="container" style="text-align: center; padding-top: 150px; padding-bottom: 150px;">
 <body onload="Paycom.Button('#form-payme', '#button-container')">

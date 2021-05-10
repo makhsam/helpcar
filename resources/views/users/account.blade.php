@@ -19,20 +19,14 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Update account</h2>
-					    <form id="accountForm" name="accountForm" action="{{ url('/account') }}" method="POST">
+					    <form id="accountForm" name="accountForm" action="/account" method="POST">
 							{{ csrf_field() }}
-							<input value="{{ $userDetails->name }}" id="name" name="name" type="text" placeholder="Name"/>
-							<input value="{{ $userDetails->address }}" id="address" name="address" type="text" placeholder="Address"/>
-							<input value="{{ $userDetails->city }}" id="city" name="city" type="text" placeholder="City"/>
-							<input value="{{ $userDetails->state }}" id="state" name="state" type="text" placeholder="State"/>
-							<select id="country" name="country">
-								<option value="">Select Country</option>
-								@foreach($countries as $country)
-								<option value="{{ $country->country_name }}" @if($country->country_name == $userDetails->country) selected @endif>{{ $country->country_name }}</option>
-								@endforeach
-							</select>
-							<input value="{{ $userDetails->pincode }}" style="margin-top: 10px;" type="text" name="pincode" id="pincode" placeholder="Pincode">
-							<input value="{{ $userDetails->mobile }}" type="text" name="mobile" id="mobile" placeholder="Mobile">
+
+							<input value="{{ $userDetails->name }}" id="name" name="name" type="text" style="width:100%" placeholder="Name"/>
+							<br>
+							<input value="{{ $userDetails->email }}" id="email" name="email" type="email" style="width:100%" placeholder="Email"/>
+							<br> <br>
+
 							<button type="submit" class="btn btn-default">Update</button>
 						</form>
 					</div><!--/login form-->

@@ -39,15 +39,13 @@ $cartCount = Product::cartCount();
 										<ul>
 											<li><a href="{{ url('/cart') }}">Savat</a></li>
                                             <li><a href="{{ url('/wish-list') }}">Tanlangan</a></li>
-								            <li><a href="{{ url('/orders') }}">Zakazlar</a></li>
 										</ul>
 									</li>
 								</ul>
 								<div class="right floatright">
-                                    <form action="{{ url('/search-products') }}" method="post">
-                                    {{ csrf_field() }}
-										<button type="submit"><i class="mdi mdi-magnify"></i></button>
-                                        <input type="text" placeholder="Search within these results..." name="product" />
+                                    <form action="{{ url('/search-products') }}" method="GET">
+										<button type="button"><i class="mdi mdi-magnify"></i></button>
+                                        <input type="text" placeholder="Search within these results..." name="product" /> <!-- value="{{ request('product') }}" -->
 									</form>
 								</div>
 							</div>

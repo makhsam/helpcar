@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\User;
 use App\Admin;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -34,17 +31,11 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        // if (Session::has('adminSession')) {
-        //     # code...
-        // }else{
-        //     return redirect('/admin')->with('flash_message_error','Please login to access');
-        // }
         return view('admin.dashboard');
     }
 
     public function settings()
     {
-
         $adminDetails = Admin::where(['username' => Session::get('adminSession')])->first();
 
         return view('admin.settings')->with(compact('adminDetails'));

@@ -292,6 +292,7 @@ CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `category_id` int(11) NOT NULL,
   `product_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price_two` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,

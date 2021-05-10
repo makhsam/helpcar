@@ -9,8 +9,6 @@
 						<div class="pages-title-text text-center">
 							@if(!empty($search_product))
 							   <h2> {{ $search_product }} </h2>
-							@else
-							   <h2> {{ $categoryDetails->name }} </h2>
 							@endif
 							<ul class="text-left">
 								<!-- <li><a href="index.html">Home </a></li>
