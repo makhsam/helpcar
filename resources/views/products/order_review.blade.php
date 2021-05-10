@@ -9,7 +9,7 @@
 						<div class="pages-title-text text-center">
 							<h2>Order review</h2>
 							<ul class="text-left">
-								<li><a href="index.html">Home </a></li>
+								<li><a href="#">Home </a></li>
 								<li><span> // </span>Order review</li>
 							</ul>
 						</div>

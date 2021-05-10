@@ -9,7 +9,7 @@
 						<div class="pages-title-text text-center">
 							<h2>Kirish</h2>
 							<ul class="text-left">
-								<!-- <li><a href="index.html">Home </a></li>
+								<!-- <li><a href="#">Home </a></li>
 								<li><span> // </span>Register</li> -->
 							</ul>
 						</div>

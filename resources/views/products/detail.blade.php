@@ -9,8 +9,8 @@
 						<div class="pages-title-text text-center">
 							<h2>{{ $productDetails->product_name }}</h2>
 							<!-- <ul class="text-left">
-								<li><a href="index.html">Home </a></li>
-								<li><span> // </span><a href="shop.html">shop </a></li>
+								<li><a href="#">Home </a></li>
+								<li><span> // </span><a href="#">shop </a></li>
 								<li><span> // </span>men’s white t-shirt</li>
 							</ul> -->
 						</div>

@@ -22,8 +22,8 @@
 									</div>
 									<div class="footer-menu">
 										<ul>
-											<li><a href="login.html"><i class="mdi mdi-menu-right"></i>Kirish</a></li>
-											<li><a href="wishlist.html"><i class="mdi mdi-menu-right"></i>Ro'yxatdan o'tish</a></li>
+											<li><a href="#"><i class="mdi mdi-menu-right"></i>Kirish</a></li>
+											<li><a href="#"><i class="mdi mdi-menu-right"></i>Ro'yxatdan o'tish</a></li>
 										</ul>
 									</div>
 								</div>

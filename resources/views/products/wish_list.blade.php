@@ -9,7 +9,7 @@
 						<div class="pages-title-text text-center">
 							<h2>Saralanganlar</h2>
 							<ul class="text-left">
-								<!-- <li><a href="index.html">Home </a></li>
+								<!-- <li><a href="#">Home </a></li>
 								<li><span> // </span>Cart</li> -->
 							</ul>
 						</div>
